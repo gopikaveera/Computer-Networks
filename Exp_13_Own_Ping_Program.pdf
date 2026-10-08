@@ -1,0 +1,745 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<<
+/Producer (pypdf)
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 4
+/Kids [ 4 0 R 12 0 R 17 0 R 22 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+4 0 obj
+<<
+/Type /Page
+/Contents 5 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font <<
+/F1 6 0 R
+/F1-0 7 0 R
+/F2 8 0 R
+/F2-0 9 0 R
+/F3 10 0 R
+/F4 11 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Annots [ ]
+/Parent 2 0 R
+>>
+endobj
+5 0 obj
+<<
+/Length 5889
+>>
+stream
+q
+q BT/F3 9 Tf 295.3878 31.1811 TD (1)Tj ET q q 1 0 0 1 62.69291 764.1969 cm 0 0 0 rg BT/F2 11.5 Tf 0 .5 TD (Exp No: 13)Tj ET Q q 1 0 0 1 159.0709 763.1969 cm 0 0 0 rg BT/F2 11.5 Tf 0 2.5 TD (Implement your own ping program)Tj ET Q q 1 0 0 1 56.69291 755.1969 cm 0 0 0 RG 1 J 1 j 0 30 m 481.8898 30 l S 0 0 m 481.8898 0 l S 0 0 m 0 30 l S 481.8898 0 m 481.8898 30 l S 96.37795 0 m 96.37795 30 l S Q Q q 1 0 0 1 56.69291 721.1969 cm 0 0 0 RG 0 1.375 m 31.044 1.375 l S 0 0 0 rg BT/F2 13 Tf 0 3 TD (AIM:)Tj ET Q q 1 0 0 1 56.69291 685.1969 cm 0 0 0 rg BT/F3 11 Tf 0 19 TD (To implement our own ping program using raw sockets in Python, which sends ICMP Echo Request)Tj 0 -15 TD (messages to a host, receives the ICMP Echo Replies and displays the round trip time and the packet loss.)Tj ET Q q 1 0 0 1 56.69291 659.1969 cm 0 0 0 RG 0 1.375 m 180.557 1.375 l S 0 0 0 rg BT/F2 13 Tf 0 3 TD (ALGORITHM / PROCEDURE:)Tj ET Q q 1 0 0 1 56.69291 623.1969 cm 0 0 0 rg BT/F1 10 Tf 6 19 TD (1.)Tj ET BT/F3 11 Tf 24 19 TD (Read the host name given in the command line and convert it into an IP address using)Tj/F4 9.5 Tf 0 -15 TD (socket.gethostbyname\(\))Tj/F3 11 Tf (.)Tj ET Q q 1 0 0 1 56.69291 590.1969 cm 0 0 0 rg BT/F1 10 Tf 6 19 TD (2.)Tj ET BT/F3 11 Tf 24 19 TD (Create a )Tj/F2 11 Tf (raw socket)Tj/F3 11 Tf ( using )Tj/F4 9.5 Tf (socket\(AF_INET, SOCK_RAW, IPPROTO_ICMP\))Tj/F3 11 Tf (. Raw sockets need)Tj 0 -15 TD (administrator rights, so the program is run with )Tj/F4 9.5 Tf (sudo)Tj/F3 11 Tf (.)Tj ET Q q 1 0 0 1 56.69291 557.1969 cm 0 0 0 rg BT/F1 10 Tf 6 19 TD (3.)Tj ET BT/F3 11 Tf 24 19 TD (Build the ICMP Echo Request: )Tj/F2 11 Tf (Type)Tj/F3 11 Tf ( = 8, )Tj/F2 11 Tf (Code)Tj/F3 11 Tf ( = 0, )Tj/F2 11 Tf (Checksum)Tj/F3 11 Tf ( = 0 \(for now\), )Tj/F2 11 Tf (Identifier)Tj/F3 11 Tf ( = process id,)Tj/F2 11 Tf 0 -15 TD (Sequence number)Tj/F3 11 Tf ( = 1, 2, 3 ... followed by the data \(current time + 16 bytes of text\).)Tj ET Q q 1 0 0 1 56.69291 524.1969 cm 0 0 0 rg BT/F1 10 Tf 6 19 TD (4.)Tj ET BT -.03414 Tw/F3 11 Tf 24 19 TD (Calculate the )Tj/F2 11 Tf (Internet checksum)Tj/F3 11 Tf ( \(16 bit one's complement sum of the whole ICMP message\) and put it)Tj 0 Tw 0 -15 TD (in the checksum field.)Tj ET Q q 1 0 0 1 56.69291 491.1969 cm 0 0 0 rg BT/F1 10 Tf 6 19 TD (5.)Tj ET BT/F3 11 Tf 24 19 TD (Send the packet with )Tj/F4 9.5 Tf (sendto\(\))Tj/F3 11 Tf ( and note the time. Wait for the reply with )Tj/F4 9.5 Tf (recvfrom\(\))Tj/F3 11 Tf ( \(time out = 2)Tj 0 -15 TD (seconds\).)Tj ET Q q 1 0 0 1 56.69291 458.1969 cm 0 0 0 rg BT/F1 10 Tf 6 19 TD (6.)Tj ET BT/F3 11 Tf 24 19 TD (The received data has a 20 byte IP header in front. Skip it, read the ICMP header and check that the)Tj/F2 11 Tf 0 -15 TD (type)Tj/F3 11 Tf ( is 0 \(Echo Reply\) and the )Tj/F2 11 Tf (identifier)Tj/F3 11 Tf ( is our id. Read the TTL from byte 8 of the IP header.)Tj ET Q q 1 0 0 1 56.69291 425.1969 cm 0 0 0 rg BT/F1 10 Tf 6 19 TD (7.)Tj ET BT/F3 11 Tf 24 19 TD (Round trip time = time of receiving - time of sending. Display the reply line. If no reply comes, display)Tj/F4 9.5 Tf 0 -15 TD (Request timed out)Tj/F3 11 Tf (.)Tj ET Q q 1 0 0 1 56.69291 407.1969 cm 0 0 0 rg BT/F1 10 Tf 6 4 TD (8.)Tj ET BT/F3 11 Tf 24 4 TD (Repeat steps 3 to 7 four times with a gap of one second.)Tj ET Q q 1 0 0 1 56.69291 374.1969 cm 0 0 0 rg BT/F1 10 Tf 6 19 TD (9.)Tj ET BT/F3 11 Tf 24 19 TD (Finally display the number of packets sent, received, % loss and the minimum / average / maximum)Tj 0 -15 TD (round trip time.)Tj ET Q q 1 0 0 1 56.69291 352.1969 cm 0 0 0 rg BT/F2 11.5 Tf 0 2.5 TD (Header and functions used)Tj ET Q q 1 0 0 1 56.69291 200.1969 cm .933333 .933333 .933333 rg 0 148 481.8898 -20.5 re f* q 1 0 0 1 6 131.5 cm 0 0 0 rg BT/F2 10 Tf 0 2.5 TD (Item)Tj ET Q q 1 0 0 1 169.8425 131.5 cm 0 0 0 rg BT/F2 10 Tf 0 2.5 TD (Meaning)Tj ET Q q 1 0 0 1 6 105.5 cm 0 0 0 rg BT/F4 8.3 Tf 0 2.7 TD (struct.pack\("!BBHHH", ...\))Tj ET Q q 1 0 0 1 169.8425 98.5 cm 0 0 0 rg BT/F3 10 Tf 0 15 TD (Packs type, code, checksum, identifier and sequence into 8 bytes in network)Tj 0 -12.5 TD (byte order)Tj ET Q q 1 0 0 1 6 78.75 cm 0 0 0 rg BT/F4 8.3 Tf 0 2.7 TD (socket.SOCK_RAW)Tj ET Q q 1 0 0 1 169.8425 78 cm 0 0 0 rg BT/F3 10 Tf 0 2.5 TD (Gives direct access to the IP packets \(we build the ICMP part ourselves\))Tj ET Q q 1 0 0 1 6 52 cm 0 0 0 rg BT/F4 8.3 Tf 0 2.7 TD (IPPROTO_ICMP)Tj ET Q q 1 0 0 1 169.8425 45 cm 0 0 0 rg BT/F3 10 Tf 0 15 TD (Tells the kernel that this raw socket handles ICMP messages \(IP protocol)Tj 0 -12.5 TD (number 1\))Tj ET Q q 1 0 0 1 6 25.25 cm 0 0 0 rg BT/F4 8.3 Tf 0 2.7 TD (checksum\(\))Tj ET Q q 1 0 0 1 169.8425 24.5 cm 0 0 0 rg BT/F3 10 Tf 0 2.5 TD (Adds all 16 bit words, adds the carry back and takes the one's complement)Tj ET Q q 1 0 0 1 6 4.75 cm 0 0 0 rg BT/F4 8.3 Tf 0 2.7 TD (data[8])Tj ET Q q 1 0 0 1 169.8425 4 cm 0 0 0 rg BT/F3 10 Tf 0 2.5 TD (TTL value inside the received IP header)Tj ET Q q 0 0 0 RG 1 J 1 j .6 w 0 148 m 481.8898 148 l S 0 0 m 481.8898 0 l S 0 0 m 0 148 l S 481.8898 0 m 481.8898 148 l S 0 127.5 m 481.8898 127.5 l S 0 94.5 m 481.8898 94.5 l S 0 74 m 481.8898 74 l S 0 41 m 481.8898 41 l S 0 20.5 m 481.8898 20.5 l S 163.8425 0 m 163.8425 148 l S Q Q Q
+
+q
+453.2427 800.62948 122.03287 15.84998 re
+h
+1 1 1 RG 1 1 1 rg B
+Q
+
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-0 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+410.2756 797.8898 m
+574.2756 797.8898 l
+575.934 797.8898 577.2756 799.2314 577.2756 800.8898 c
+577.2756 826.8898 l
+577.2756 828.5482 575.934 829.8898 574.2756 829.8898 c
+410.2756 829.8898 l
+408.6172 829.8898 407.2756 828.5482 407.2756 826.8898 c
+407.2756 800.8898 l
+407.2756 799.2314 408.6172 797.8898 410.2756 797.8898 c
+h
+f*
+0.05 0.25 0.65 rg
+BT
+/F2-0 9.5 Tf
+11.4 TL
+ET
+BT
+1 0 0 1 529.0931 818.8898 Tm
+(Gopika V) Tj
+T*
+ET
+BT
+/F2-0 8.5 Tf
+10.2 TL
+ET
+BT
+1 0 0 1 492.7981 807.8898 Tm
+(Reg No\072 241501058) Tj
+T*
+ET
+Q
+
+
+endstream
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+>>
+endobj
+7 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Times-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+>>
+endobj
+9 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+10 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Times-Roman
+/Encoding /WinAnsiEncoding
+/Name /F3
+>>
+endobj
+11 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Courier
+/Encoding /WinAnsiEncoding
+/Name /F4
+>>
+endobj
+12 0 obj
+<<
+/Type /Page
+/Contents 13 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font <<
+/F1 14 0 R
+/F2 8 0 R
+/F2-0 15 0 R
+/F3 10 0 R
+/F5 16 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Annots [ ]
+/Parent 2 0 R
+>>
+endobj
+13 0 obj
+<<
+/Length 4518
+>>
+stream
+q
+q BT/F3 9 Tf 295.3878 31.1811 TD (2)Tj ET q 1 0 0 1 56.69291 769.1969 cm 0 0 0 RG 0 1.375 m 69.316 1.375 l S 0 0 0 rg BT/F2 13 Tf 0 3 TD (DIAGRAM:)Tj ET Q q[]0 d q 1 0 0 1 56.69291 613.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 7.5 Tf 68.125 138 TD (0)Tj ET Q q 1 0 0 1 56.69291 613.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 7.5 Tf 148.125 138 TD (8)Tj ET Q q 1 0 0 1 56.69291 613.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 7.5 Tf 226.25 138 TD (16)Tj ET Q q 1 0 0 1 56.69291 613.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 7.5 Tf 386.25 138 TD (31)Tj ET Q q[]0 d 1 0 0 1 56.69291 613.1969 cm 1 1 1 rg 0 0 0 RG 70 105 80 24 re B* Q q 1 0 0 1 56.69291 613.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 8.5 Tf 95.24825 114 TD (Type \(8\))Tj ET Q q[]0 d 1 0 0 1 56.69291 613.1969 cm 1 1 1 rg 0 0 0 RG 150 105 80 24 re B* Q q 1 0 0 1 56.69291 613.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 8.5 Tf 175.0102 114 TD (Code \(8\))Tj ET Q q[]0 d 1 0 0 1 56.69291 613.1969 cm 1 1 1 rg 0 0 0 RG 230 105 160 24 re B* Q q 1 0 0 1 56.69291 613.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 8.5 Tf 283.9135 114 TD (Checksum \(16\))Tj ET Q q[]0 d 1 0 0 1 56.69291 613.1969 cm 1 1 1 rg 0 0 0 RG 70 81 160 24 re B* Q q 1 0 0 1 56.69291 613.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 8.5 Tf 126.0427 90 TD (Identifier \(16\))Tj ET Q q[]0 d 1 0 0 1 56.69291 613.1969 cm 1 1 1 rg 0 0 0 RG 230 81 160 24 re B* Q q 1 0 0 1 56.69291 613.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 8.5 Tf 271.5247 90 TD (Sequence number \(16\))Tj ET Q q[]0 d 1 0 0 1 56.69291 613.1969 cm 1 1 1 rg 0 0 0 RG 70 57 320 24 re B* Q q 1 0 0 1 56.69291 613.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 8.5 Tf 131.4723 66 TD (Data : timestamp \(8 bytes\) + payload "abcdefghijklmnop")Tj ET Q q 1 0 0 1 56.69291 613.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 7.5 Tf 20.10375 112 TD (Byte 0)Tj ET Q q 1 0 0 1 56.69291 613.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 7.5 Tf 20.10375 88 TD (Byte 4)Tj ET Q q 1 0 0 1 56.69291 613.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 7.5 Tf 20.10375 64 TD (Byte 8)Tj ET Q q 1 0 0 1 56.69291 613.1969 cm 0 0 0 rg 0 0 0 RG BT/F5 9 Tf 113.6894 22 TD (Echo Request: Type = 8, Code = 0     Echo Reply: Type = 0, Code = 0)Tj ET Q Q q 1 0 0 1 56.69291 598.1969 cm 0 0 0 rg BT/F2 10 Tf 132.3499 2 TD (Fig 1: ICMP Echo Request / Reply message format)Tj ET Q q[]0 d q 1 0 0 1 56.69291 446.1969 cm 0 0 0 rg 0 0 0 RG BT/F2 8.5 Tf -4.34675 132 TD (My ping program)Tj ET Q q 1 0 0 1 56.69291 446.1969 cm 0 0 0 rg 0 0 0 RG BT/F2 8.5 Tf 272.6028 132 TD (Destination host)Tj ET Q q[]0 d 1 0 0 1 56.69291 446.1969 cm 0 0 0 RG 28 126 m 28 6 l S Q q[]0 d 1 0 0 1 56.69291 446.1969 cm 0 0 0 RG 302 126 m 302 6 l S Q q[]0 d 1 0 0 1 56.69291 446.1969 cm 0 0 0 RG 28 112 m 302 112 l S Q q[]0 d 1 0 0 1 56.69291 446.1969 cm 0 0 0 rg 0 0 0 RG .5 w 302 112 m 297.3947 113.9471 l 297.3947 110.0529 l h B* Q q 1 0 0 1 56.69291 446.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 7.5 Tf 111.7763 115 TD (ICMP Echo Request \(type 8, seq 1\))Tj ET Q q[]0 d 1 0 0 1 56.69291 446.1969 cm 0 0 0 RG 302 86 m 28 86 l S Q q[]0 d 1 0 0 1 56.69291 446.1969 cm 0 0 0 rg 0 0 0 RG .5 w 28 86 m 32.6053 84.05291 l 32.6053 87.94709 l h B* Q q 1 0 0 1 56.69291 446.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 7.5 Tf 114.9 89 TD (ICMP Echo Reply \(type 0, seq 1\))Tj ET Q q[]0 d 1 0 0 1 56.69291 446.1969 cm 0 0 0 RG 28 60 m 302 60 l S Q q[]0 d 1 0 0 1 56.69291 446.1969 cm 0 0 0 rg 0 0 0 RG .5 w 302 60 m 297.3947 61.94709 l 297.3947 58.05291 l h B* Q q 1 0 0 1 56.69291 446.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 7.5 Tf 111.7763 63 TD (ICMP Echo Request \(type 8, seq 2\))Tj ET Q q[]0 d 1 0 0 1 56.69291 446.1969 cm 0 0 0 RG 302 34 m 28 34 l S Q q[]0 d 1 0 0 1 56.69291 446.1969 cm 0 0 0 rg 0 0 0 RG .5 w 28 34 m 32.6053 32.05291 l 32.6053 35.94709 l h B* Q q 1 0 0 1 56.69291 446.1969 cm 0 0 0 rg 0 0 0 RG BT/F3 7.5 Tf 114.9 37 TD (ICMP Echo Reply \(type 0, seq 2\))Tj ET Q Q q 1 0 0 1 56.69291 431.1969 cm 0 0 0 rg BT/F2 10 Tf 163.9999 2 TD (Fig 2: Working of the ping program)Tj ET Q Q
+
+q
+453.2427 800.62948 122.03287 15.84998 re
+h
+1 1 1 RG 1 1 1 rg B
+Q
+
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+410.2756 797.8898 m
+574.2756 797.8898 l
+575.934 797.8898 577.2756 799.2314 577.2756 800.8898 c
+577.2756 826.8898 l
+577.2756 828.5482 575.934 829.8898 574.2756 829.8898 c
+410.2756 829.8898 l
+408.6172 829.8898 407.2756 828.5482 407.2756 826.8898 c
+407.2756 800.8898 l
+407.2756 799.2314 408.6172 797.8898 410.2756 797.8898 c
+h
+f*
+0.05 0.25 0.65 rg
+BT
+/F2-0 9.5 Tf
+11.4 TL
+ET
+BT
+1 0 0 1 529.0931 818.8898 Tm
+(Gopika V) Tj
+T*
+ET
+BT
+/F2-0 8.5 Tf
+10.2 TL
+ET
+BT
+1 0 0 1 492.7981 807.8898 Tm
+(Reg No\072 241501058) Tj
+T*
+ET
+Q
+
+
+endstream
+endobj
+14 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+15 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+16 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Times-Italic
+/Encoding /WinAnsiEncoding
+/Name /F5
+>>
+endobj
+17 0 obj
+<<
+/Type /Page
+/Contents 18 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font <<
+/F1 19 0 R
+/F2 8 0 R
+/F2-0 20 0 R
+/F3 10 0 R
+/F4 11 0 R
+/F6 21 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Annots [ ]
+/Parent 2 0 R
+>>
+endobj
+18 0 obj
+<<
+/Length 4629
+>>
+stream
+q
+q BT/F3 9 Tf 295.3878 31.1811 TD (3)Tj ET q 1 0 0 1 56.69291 769.1969 cm 0 0 0 RG 0 1.375 m 72.93 1.375 l S 0 0 0 rg BT/F2 13 Tf 0 3 TD (PROGRAM:)Tj ET Q q 1 0 0 1 56.69291 208.9969 cm 1 1 1 rg 0 0 0 RG .8 w 0 0 481.8898 554.2 re B* 0 539.2 481.8898 15 re f* 0 539.2 m 481.8898 539.2 l S 0 0 0 rg BT/F6 8.5 Tf 8 543.7 TD (myping.py)Tj ET BT/F4 7.8 Tf 6 528.8 TD (# Own ping program using RAW sockets \(ICMP\) - run as root)Tj ET BT/F4 7.8 Tf 6 519 TD (import socket, struct, time, sys, os)Tj ET BT/F4 7.8 Tf 6 499.4 TD (def checksum\(data\):)Tj ET BT/F4 7.8 Tf 6 489.6 TD (    if len\(data\) % 2:)Tj ET BT/F4 7.8 Tf 6 479.8 TD (        data += b'\\x00')Tj ET BT/F4 7.8 Tf 6 470 TD (    s = sum\(struct.unpack\("!%dH" % \(len\(data\) // 2\), data\)\))Tj ET BT/F4 7.8 Tf 6 460.2 TD (    s = \(s >> 16\) + \(s & 0xffff\))Tj ET BT/F4 7.8 Tf 6 450.4 TD (    s += s >> 16)Tj ET BT/F4 7.8 Tf 6 440.6 TD (    return ~s & 0xffff)Tj ET BT/F4 7.8 Tf 6 421 TD (def make_packet\(seq, pid\):)Tj ET BT/F4 7.8 Tf 6 411.2 TD (    header = struct.pack\("!BBHHH", 8, 0, 0, pid, seq\)      # type 8 = echo request)Tj ET BT/F4 7.8 Tf 6 401.4 TD (    payload = struct.pack\("!d", time.time\(\)\) + b"abcdefghijklmnop")Tj ET BT/F4 7.8 Tf 6 391.6 TD (    chk = checksum\(header + payload\))Tj ET BT/F4 7.8 Tf 6 381.8 TD (    header = struct.pack\("!BBHHH", 8, 0, chk, pid, seq\))Tj ET BT/F4 7.8 Tf 6 372 TD (    return header + payload)Tj ET BT/F4 7.8 Tf 6 352.4 TD (def ping\(host, count=4\):)Tj ET BT/F4 7.8 Tf 6 342.6 TD (    try:)Tj ET BT/F4 7.8 Tf 6 332.8 TD (        ip = socket.gethostbyname\(host\))Tj ET BT/F4 7.8 Tf 6 323 TD (    except socket.gaierror:)Tj ET BT/F4 7.8 Tf 6 313.2 TD (        print\(f"ping: {host}: Name or service not known"\))Tj ET BT/F4 7.8 Tf 6 303.4 TD (        return)Tj ET BT/F4 7.8 Tf 6 293.6 TD (    s = socket.socket\(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_ICMP\))Tj ET BT/F4 7.8 Tf 6 283.8 TD (    s.settimeout\(2\))Tj ET BT/F4 7.8 Tf 6 274 TD (    pid = os.getpid\(\) & 0xffff)Tj ET BT/F4 7.8 Tf 6 264.2 TD (    print\(f"PING {host} \({ip}\) 32 bytes of data."\))Tj ET BT/F4 7.8 Tf 6 254.4 TD (    times = [])Tj ET BT/F4 7.8 Tf 6 244.6 TD (    for seq in range\(1, count + 1\):)Tj ET BT/F4 7.8 Tf 6 234.8 TD (        s.sendto\(make_packet\(seq, pid\), \(ip, 0\)\))Tj ET BT/F4 7.8 Tf 6 225 TD (        t1 = time.time\(\))Tj ET BT/F4 7.8 Tf 6 215.2 TD (        try:)Tj ET BT/F4 7.8 Tf 6 205.4 TD (            while True:)Tj ET BT/F4 7.8 Tf 6 195.6 TD (                data, addr = s.recvfrom\(1024\))Tj ET BT/F4 7.8 Tf 6 185.8 TD (                typ, code, _, rid, rseq = struct.unpack\("!BBHHH", data[20:28]\))Tj ET BT/F4 7.8 Tf 6 176 TD (                if typ == 0 and rid == pid:)Tj ET BT/F4 7.8 Tf 6 166.2 TD (                    break)Tj ET BT/F4 7.8 Tf 6 156.4 TD (            rtt = \(time.time\(\) - t1\) * 1000)Tj ET BT/F4 7.8 Tf 6 146.6 TD (            ttl = data[8])Tj ET BT/F4 7.8 Tf 6 136.8 TD (            times.append\(rtt\))Tj ET BT/F4 7.8 Tf 6 127 TD (            print\(f"{len\(data\)-20} bytes from {addr[0]}: icmp_seq={rseq} ttl={ttl} time={rtt:.3f} ms)Tj ET BT/F4 7.8 Tf 6 117.2 TD (              "\))Tj ET BT/F4 7.8 Tf 6 107.4 TD (        except socket.timeout:)Tj ET BT/F4 7.8 Tf 6 97.6 TD (            print\(f"Request timed out for icmp_seq={seq}"\))Tj ET BT/F4 7.8 Tf 6 87.8 TD (        time.sleep\(1\))Tj ET BT/F4 7.8 Tf 6 78 TD (    s.close\(\))Tj ET BT/F4 7.8 Tf 6 68.2 TD (    lost = count - len\(times\))Tj ET BT/F4 7.8 Tf 6 58.4 TD (    print\(f"\\n--- {host} ping statistics ---"\))Tj ET BT/F4 7.8 Tf 6 48.6 TD (    print\(f"{count} packets transmitted, {len\(times\)} received, {lost*100//count}% packet loss"\))Tj ET BT/F4 7.8 Tf 6 38.8 TD (    if times:)Tj ET BT/F4 7.8 Tf 6 29 TD (        print\(f"rtt min/avg/max = {min\(times\):.3f}/{sum\(times\)/len\(times\):.3f}/{max\(times\):.3f} ms"\))Tj ET BT/F4 7.8 Tf 6 9.4 TD (ping\(sys.argv[1] if len\(sys.argv\) > 1 else "127.0.0.1"\))Tj ET Q Q
+
+q
+453.2427 800.62948 122.03287 15.84998 re
+h
+1 1 1 RG 1 1 1 rg B
+Q
+
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+410.2756 797.8898 m
+574.2756 797.8898 l
+575.934 797.8898 577.2756 799.2314 577.2756 800.8898 c
+577.2756 826.8898 l
+577.2756 828.5482 575.934 829.8898 574.2756 829.8898 c
+410.2756 829.8898 l
+408.6172 829.8898 407.2756 828.5482 407.2756 826.8898 c
+407.2756 800.8898 l
+407.2756 799.2314 408.6172 797.8898 410.2756 797.8898 c
+h
+f*
+0.05 0.25 0.65 rg
+BT
+/F2-0 9.5 Tf
+11.4 TL
+ET
+BT
+1 0 0 1 529.0931 818.8898 Tm
+(Gopika V) Tj
+T*
+ET
+BT
+/F2-0 8.5 Tf
+10.2 TL
+ET
+BT
+1 0 0 1 492.7981 807.8898 Tm
+(Reg No\072 241501058) Tj
+T*
+ET
+Q
+
+
+endstream
+endobj
+19 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+20 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+21 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Courier-Bold
+/Encoding /WinAnsiEncoding
+/Name /F6
+>>
+endobj
+22 0 obj
+<<
+/Type /Page
+/Contents 23 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font <<
+/F1 24 0 R
+/F2 8 0 R
+/F2-0 25 0 R
+/F3 10 0 R
+/F4 11 0 R
+/F7 26 0 R
+/cour 27 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Annots [ ]
+/Parent 2 0 R
+>>
+endobj
+23 0 obj
+<<
+/Length 7049
+>>
+stream
+q
+q BT/F3 9 Tf 295.3878 31.1811 TD (4)Tj ET q 1 0 0 1 56.69291 769.1969 cm 0 0 0 RG 0 1.375 m 58.5 1.375 l S 0 0 0 rg BT/F2 13 Tf 0 3 TD (OUTPUT:)Tj ET Q q 1 0 0 1 56.69291 620.5969 cm .188235 .039216 .141176 rg 0 0 481.8898 142.6 re f* .235294 .231373 .215686 rg 0 127.6 481.8898 15.000008 re f* .87451 .858824 .823529 rg .188235 .039216 .141176 RG BT/F7 8 Tf 8 132.1 TD[-2557.0006]TJ (@)Tj[-2557.0006]TJ (-VirtualBox: ~)Tj ET .541176 .886275 .203922 rg BT/F4 7.6 Tf 6 117.2 TD[-3600]TJ (@)Tj[-3600]TJ (-VirtualBox)Tj ET .933333 .933333 .933333 rg BT/F4 7.6 Tf 115.44 117.2 TD (:)Tj ET .447059 .623529 .811765 rg BT/F4 7.6 Tf 120 117.2 TD (~)Tj ET .933333 .933333 .933333 rg BT/F4 7.6 Tf 124.56 117.2 TD ($ )Tj ET 1 1 1 rg BT/F4 7.6 Tf 133.68 117.2 TD (sudo python3 myping.py 127.0.0.1)Tj ET .933333 .933333 .933333 rg BT/F4 7.6 Tf 6 107.4 TD (PING 127.0.0.1 \(127.0.0.1\) 32 bytes of data.)Tj ET BT/F4 7.6 Tf 6 97.6 TD (32 )Tj ET .541176 .886275 .203922 rg BT/F4 7.6 Tf 19.68 97.6 TD (bytes from 127.0.0.1)Tj ET .933333 .933333 .933333 rg BT/F4 7.6 Tf 110.88 97.6 TD (: icmp_seq=1 ttl=64 time=0.015 ms)Tj ET BT/F4 7.6 Tf 6 87.8 TD (32 )Tj ET .541176 .886275 .203922 rg BT/F4 7.6 Tf 19.68 87.8 TD (bytes from 127.0.0.1)Tj ET .933333 .933333 .933333 rg BT/F4 7.6 Tf 110.88 87.8 TD (: icmp_seq=2 ttl=64 time=0.017 ms)Tj ET BT/F4 7.6 Tf 6 78 TD (32 )Tj ET .541176 .886275 .203922 rg BT/F4 7.6 Tf 19.68 78 TD (bytes from 127.0.0.1)Tj ET .933333 .933333 .933333 rg BT/F4 7.6 Tf 110.88 78 TD (: icmp_seq=3 ttl=64 time=0.023 ms)Tj ET BT/F4 7.6 Tf 6 68.2 TD (32 )Tj ET .541176 .886275 .203922 rg BT/F4 7.6 Tf 19.68 68.2 TD (bytes from 127.0.0.1)Tj ET .933333 .933333 .933333 rg BT/F4 7.6 Tf 110.88 68.2 TD (: icmp_seq=4 ttl=64 time=0.036 ms)Tj ET BT/F4 7.6 Tf 6 48.6 TD (--- 127.0.0.1 ping statistics ---)Tj ET BT/F4 7.6 Tf 6 38.8 TD (4 packets transmitted, 4 received, )Tj ET .541176 .886275 .203922 rg BT/F4 7.6 Tf 165.6 38.8 TD (0% packet loss)Tj ET .933333 .933333 .933333 rg BT/F4 7.6 Tf 6 29 TD (rtt min/avg/max = 0.015/0.023/0.036 ms)Tj ET .541176 .886275 .203922 rg BT/F4 7.6 Tf 6 19.2 TD[-3600]TJ (@)Tj[-3600]TJ (-VirtualBox)Tj ET .933333 .933333 .933333 rg BT/F4 7.6 Tf 115.44 19.2 TD (:)Tj ET .447059 .623529 .811765 rg BT/F4 7.6 Tf 120 19.2 TD (~)Tj ET .933333 .933333 .933333 rg BT/F4 7.6 Tf 124.56 19.2 TD ($ )Tj ET 1 1 1 rg BT/F4 7.6 Tf 133.68 19.2 TD (sudo python3 myping.py abc.invalid)Tj ET .933333 .933333 .933333 rg BT/F4 7.6 Tf 6 9.4 TD (ping: abc.invalid: Name or service not known)Tj ET Q q 1 0 0 1 56.69291 488.5969 cm .933333 .933333 .933333 rg 0 123 481.8898 -20.5 re f* q 1 0 0 1 6 106.5 cm 0 0 0 rg BT/F2 10 Tf 0 2.5 TD (Quantity)Tj ET Q q 1 0 0 1 246.9449 106.5 cm 0 0 0 rg BT/F2 10 Tf 0 2.5 TD (Value)Tj ET Q q 1 0 0 1 6 86 cm 0 0 0 rg BT/F3 10 Tf 0 2.5 TD (Packets transmitted)Tj ET Q q 1 0 0 1 246.9449 86 cm 0 0 0 rg BT/F3 10 Tf 0 2.5 TD (4)Tj ET Q q 1 0 0 1 6 65.5 cm 0 0 0 rg BT/F3 10 Tf 0 2.5 TD (Packets received)Tj ET Q q 1 0 0 1 246.9449 65.5 cm 0 0 0 rg BT/F3 10 Tf 0 2.5 TD (4)Tj ET Q q 1 0 0 1 6 45 cm 0 0 0 rg BT/F3 10 Tf 0 2.5 TD (Packet loss)Tj ET Q q 1 0 0 1 246.9449 45 cm 0 0 0 rg BT/F3 10 Tf 0 2.5 TD (0%)Tj ET Q q 1 0 0 1 6 24.5 cm 0 0 0 rg BT/F3 10 Tf 0 2.5 TD (Minimum / average / maximum RTT)Tj ET Q q 1 0 0 1 246.9449 24.5 cm 0 0 0 rg BT/F3 10 Tf 0 2.5 TD (0.015 / 0.023 / 0.036 ms)Tj ET Q q 1 0 0 1 6 4 cm 0 0 0 rg BT/F3 10 Tf 0 2.5 TD (TTL of reply)Tj ET Q q 1 0 0 1 246.9449 4 cm 0 0 0 rg BT/F3 10 Tf 0 2.5 TD (64 \(loopback address\))Tj ET Q q 0 0 0 RG 1 J 1 j .6 w 0 123 m 481.8898 123 l S 0 0 m 481.8898 0 l S 0 0 m 0 123 l S 481.8898 0 m 481.8898 123 l S 0 102.5 m 481.8898 102.5 l S 0 82 m 481.8898 82 l S 0 61.5 m 481.8898 61.5 l S 0 41 m 481.8898 41 l S 0 20.5 m 481.8898 20.5 l S 240.9449 0 m 240.9449 123 l S Q Q q 1 0 0 1 56.69291 454.5969 cm 0 0 0 RG 0 1.375 m 56.342 1.375 l S 0 0 0 rg BT/F2 13 Tf 0 3 TD (RESULT:)Tj ET Q q 1 0 0 1 56.69291 418.5969 cm 0 0 0 rg BT/F3 11 Tf 0 19 TD (Thus our own ping program was implemented using raw sockets. ICMP Echo Request packets were sent, the)Tj 0 -15 TD (Echo Replies were received and the round trip time and packet loss statistics were displayed successfully.)Tj ET Q Q
+
+q
+453.2427 800.62948 122.03287 15.84998 re
+h
+1 1 1 RG 1 1 1 rg B
+Q
+
+q
+BT
+1 0 0 1 64.69291 754.4909 Tm /cour 6.5 Tf .87451 .858824 .823529 RG .87451 .858824 .823529 rg [<55736572>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 92.94891 754.4909 Tm /cour 6.5 Tf .87451 .858824 .823529 RG .87451 .858824 .823529 rg [<55736572>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 62.69291 739.47476 Tm /cour 5.6 Tf .541176 .886275 .203922 RG .541176 .886275 .203922 rg [<55736572>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 94.61291 739.47476 Tm /cour 5.6 Tf .541176 .886275 .203922 RG .541176 .886275 .203922 rg [<55736572>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 62.69291 641.47476 Tm /cour 5.6 Tf .541176 .886275 .203922 RG .541176 .886275 .203922 rg [<55736572>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 94.61291 641.47476 Tm /cour 5.6 Tf .541176 .886275 .203922 RG .541176 .886275 .203922 rg [<55736572>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 64.69291 754.4909 Tm /cour 6.5 Tf .87451 .858824 .823529 RG .87451 .858824 .823529 rg [<75736572>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 92.94891 754.4909 Tm /cour 6.5 Tf .87451 .858824 .823529 RG .87451 .858824 .823529 rg [<75736572>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 62.69291 739.47476 Tm /cour 5.6 Tf .541176 .886275 .203922 RG .541176 .886275 .203922 rg [<75736572>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 94.61291 739.47476 Tm /cour 5.6 Tf .541176 .886275 .203922 RG .541176 .886275 .203922 rg [<75736572>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 62.69291 641.47476 Tm /cour 5.6 Tf .541176 .886275 .203922 RG .541176 .886275 .203922 rg [<75736572>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 94.61291 641.47476 Tm /cour 5.6 Tf .541176 .886275 .203922 RG .541176 .886275 .203922 rg [<75736572>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 64.69291 754.4909 Tm /cour 6.5 Tf .87451 .858824 .823529 RG .87451 .858824 .823529 rg [<55534552>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 92.94891 754.4909 Tm /cour 6.5 Tf .87451 .858824 .823529 RG .87451 .858824 .823529 rg [<55534552>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 62.69291 739.47476 Tm /cour 5.6 Tf .541176 .886275 .203922 RG .541176 .886275 .203922 rg [<55534552>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 94.61291 739.47476 Tm /cour 5.6 Tf .541176 .886275 .203922 RG .541176 .886275 .203922 rg [<55534552>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 62.69291 641.47476 Tm /cour 5.6 Tf .541176 .886275 .203922 RG .541176 .886275 .203922 rg [<55534552>]TJ
+ET
+Q
+
+q
+BT
+1 0 0 1 94.61291 641.47476 Tm /cour 5.6 Tf .541176 .886275 .203922 RG .541176 .886275 .203922 rg [<55534552>]TJ
+ET
+Q
+
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+410.2756 797.8898 m
+574.2756 797.8898 l
+575.934 797.8898 577.2756 799.2314 577.2756 800.8898 c
+577.2756 826.8898 l
+577.2756 828.5482 575.934 829.8898 574.2756 829.8898 c
+410.2756 829.8898 l
+408.6172 829.8898 407.2756 828.5482 407.2756 826.8898 c
+407.2756 800.8898 l
+407.2756 799.2314 408.6172 797.8898 410.2756 797.8898 c
+h
+f*
+0.05 0.25 0.65 rg
+BT
+/F2-0 9.5 Tf
+11.4 TL
+ET
+BT
+1 0 0 1 529.0931 818.8898 Tm
+(Gopika V) Tj
+T*
+ET
+BT
+/F2-0 8.5 Tf
+10.2 TL
+ET
+BT
+1 0 0 1 492.7981 807.8898 Tm
+(Reg No\072 241501058) Tj
+T*
+ET
+Q
+
+
+endstream
+endobj
+24 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+25 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+26 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F7
+>>
+endobj
+27 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Courier
+/Encoding /WinAnsiEncoding
+>>
+endobj
+xref
+0 28
+0000000000 65535 f 
+0000000015 00000 n 
+0000000054 00000 n 
+0000000134 00000 n 
+0000000183 00000 n 
+0000000460 00000 n 
+0000006401 00000 n 
+0000006508 00000 n 
+0000006615 00000 n 
+0000006723 00000 n 
+0000006835 00000 n 
+0000006945 00000 n 
+0000007051 00000 n 
+0000007320 00000 n 
+0000011891 00000 n 
+0000011999 00000 n 
+0000012112 00000 n 
+0000012223 00000 n 
+0000012503 00000 n 
+0000017185 00000 n 
+0000017293 00000 n 
+0000017406 00000 n 
+0000017517 00000 n 
+0000017810 00000 n 
+0000024912 00000 n 
+0000025020 00000 n 
+0000025133 00000 n 
+0000025246 00000 n 
+trailer
+<<
+/Size 28
+/Root 3 0 R
+/Info 1 0 R
+>>
+startxref
+25342
+%%EOF
+3 1 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+ /AF [29 0 R] /Names << /EmbeddedFiles << /Names [(Content Credentials) 29 0 R] >> >> >>
+endobj
+28 0 obj
+<< /Length 24280 /Type /EmbeddedFile /Subtype /application#2Fc2pa >>
+stream
+  ^ÿjumb   jumdc2pa  Ä  ™ 8õqc2pa   ^≤jumb   Gjumdc2ma  Ä  ™ 8õqurn:c2pa:a554ba08-d9cf-40a3-94ae-b5ac5b1abf78   ¢jumb   )jumdc2as  Ä  ™ 8õqc2pa.assertions   	πjumb   #jumd@À2ªäHùß*÷ÙCic2pa.icon    bfdb image/svg+xml   	wbidb<svg width="716" height="716" viewBox="0 0 716 716" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M508.749 317.399C516.777 287.314 508.991 253.884 485.389 230.282C461.788 206.681 428.36 198.895 398.273 206.923C376.231 184.928 343.39 174.956 311.148 183.596C278.906 192.234 255.45 217.292 247.36 247.361C217.291 255.451 192.233 278.91 183.595 311.149C174.957 343.391 184.927 376.232 206.924 398.274C198.896 428.359 206.683 461.789 230.284 485.391C253.885 508.992 287.313 516.779 317.401 508.75C339.442 530.745 372.286 540.717 404.525 532.079C436.767 523.441 460.223 498.384 468.313 468.315C498.383 460.224 523.44 436.766 532.078 404.526C540.716 372.285 530.747 339.443 508.749 317.402V317.399ZM470.899 244.776C486.892 260.77 493.488 282.601 490.687 303.412L415.577 260.046C412.411 258.218 408.509 258.218 405.345 260.046L317.401 310.82V277.526C317.401 275.191 318.652 273.005 320.676 271.837L387.644 233.174C414.178 218.353 448.346 222.223 470.901 244.776H470.899ZM357.837 311.144L398.275 334.491V381.185L357.837 404.532L317.398 381.185V334.491L357.837 311.144ZM264.776 269.693C265.207 239.305 285.644 211.649 316.453 203.393C338.3 197.54 360.505 202.744 377.127 215.573L302.014 258.937C298.848 260.764 296.898 264.144 296.898 267.798V369.346L268.065 352.699C266.043 351.531 264.776 349.353 264.776 347.017V269.691V269.693ZM203.391 316.454C209.244 294.608 224.854 277.978 244.276 269.999V356.73C244.276 360.384 246.226 363.763 249.392 365.591L337.337 416.365L308.503 433.013C306.481 434.181 303.961 434.188 301.939 433.02L234.971 394.357C208.868 378.789 195.138 347.261 203.391 316.454ZM244.775 470.9C228.781 454.906 222.186 433.075 224.986 412.264L300.096 455.63C303.263 457.457 307.164 457.457 310.328 455.63L398.273 404.856V438.149C398.273 440.485 397.022 442.671 394.997 443.839L328.029 482.502C301.495 497.322 267.327 493.452 244.772 470.9H244.775ZM450.897 445.982C450.466 476.371 430.029 504.027 399.22 512.283C377.373 518.136 355.168 512.932 338.547 500.102L413.659 456.738C416.826 454.911 418.775 451.532 418.775 447.877V346.329L447.609 362.977C449.631 364.145 450.897 366.323 450.897 368.659V445.985V445.982ZM512.282 399.221C506.429 421.068 490.819 437.697 471.397 445.676V358.946C471.397 355.292 469.448 351.912 466.281 350.085L378.336 299.311L407.17 282.663C409.192 281.495 411.712 281.487 413.734 282.655L480.702 321.318C506.805 336.887 520.536 368.415 512.282 399.221Z" fill="black"/>
+</svg>
+  jumb   )jumdcbor  Ä  ™ 8õqc2pa.actions.v2    „cbor¢gactionsÅ§factionlc2pa.createdqdigitalSourceTypexFhttp://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMediamsoftwareAgent¢dnameggpt-5-6gversionggpt-5-6dwhenx2026-10-08T17:56:34.383435ZrallActionsIncludedÙ   §jumb   (jumdcbor  Ä  ™ 8õqc2pa.hash.data    tcbor•jexclusionsÅ¢estartfYflength^ÿdnamenjumbf manifestcalgfsha256dhashX ·H3/“>€j_å€ﬂGÍ¸¥ê÷ìˆ8Ë#®ñΩcpad@  âjumb   'jumdc2cl  Ä  ™ 8õqc2pa.claim.v2   Zcbor¶jinstanceIDx,xmp:iid:b44fa1a6-536d-4448-8a3d-e1f992842e0etclaim_generator_info£dnamegChatGPTdicon¢curlx$self#jumbf=c2pa.assertions/c2pa.icondhashX u>=W1í≥®NÎL˚¡åt∑'w÷–6«e6„ÒkspecVersione2.2.0isignaturexMself#jumbf=/c2pa/urn:c2pa:a554ba08-d9cf-40a3-94ae-b5ac5b1abf78/c2pa.signaturercreated_assertionsÉ¢curlx$self#jumbf=c2pa.assertions/c2pa.icondhashX u>=W1í≥®NÎL˚¡åt∑'w÷–6«e6„Ò¢curlx*self#jumbf=c2pa.assertions/c2pa.actions.v2dhashX  %◊Tïá™íUZ¿DÿF¿∞˘û†ïπΩ ¨xƒ¢curlx)self#jumbf=c2pa.assertions/c2pa.hash.datadhashX æ’èÂù∏m»´^»‰£@7NåwI+Àó”˜ÒëÚÜ%hdc:titleiimage.pdfcalgfsha256  P8jumb   (jumdc2cs  Ä  ™ 8õqc2pa.signature   Pcbor“ÑYË¢8$!ÇYà0ÇÑ0Çl†•¸ÈpåÚÄ1ÓDds0	*ÜHÜ˜ 0J1!0USSL.com C2PA ICA R1 202510U
+SSL Corporation10	UUS0260422155105Z270423155104Z0G10	UUS10U
+OpenAI OpCo, LLC10UOpenAI Media Service0Ç"0	*ÜHÜ˜ Ç 0Ç
+Ç ù∫jLMóÍÅâ∂—æ^XNr°ôﬂiq|Â!#”Å¢5úL£J<Ôn+øÊdÆ◊ÑKi$ZcœÍv
+ê≤e€|<ç·˛¡3wØ'ﬁ; :¥cáòÕMúø¥3D™T07F∏˝öyDsWU£c|›¨X/ÊzÆﬁ•ò√ìNHZ¯‡|§íK’l∫ ¬*»íæu‘îgµW™jöm00,◊Uaåj“S∂ x^ECûNí£ÄÒØ[—≤Î˛ãÔ∫◊7	ï´d-ô…áö¯ø.–ÁcÄñöy†7ì6£5…H…,òcÈDõ5¨πßSlúhs»
+9ÃIÛ £Çg0Çc0Uˇ0 0U#0Ä9=G‹óèØà{MsÕÂÓ§•*0o+c0a09+0Ü-http://crt-c2pa.ssl.com/SSL.com-C2PA-I-R1.cer0$+0Ühttp://ocsp-c2pa.ssl.com0U 00
++ÉË^0)U%"0 ++$
++ÉË^0UÛùM‘Àùr¯F
+vG•hOt0Uˇ¿0	+ÉË^
++ÉË^
+03	+ÉË^&$019bc403-5cd7-7669-afe6-fdb17177d4280	*ÜHÜ˜ Ç Ç8óle°7 Ò˘Ìt∫’¶[5ıglœ+fi@Õı¸“rVﬂ ï(Í¯fﬁBC=¯x†h(â≠µÓ¸ı2“å∏_ÁlÄnÎ[|ó[0Á.B∏∆pö˛˛ 	¨5F’†åIEÄ√∫íU«Zùo“Îÿyõñ:ºDê44}ÙA•3ó/.lQR
+m=I∞À«ÜXÃ‹Óû.È∆9∏3\ ⁄Ó W3T.p(J%)Oí|.“˙›g.zËPx9Q∫É:⁄à~ê#êíıbXöÂ¬®sÜû≈ÿqÈÔ\d{ëÓ7/vòxVdÁoB—}íºÖjomdÖÿˇ"ñÌπÔ≤–\Ñ}h]5[K±≈iHyÊhé†ƒaò:L¯¿$yÂ¶h‡Ô˝÷ê÷.-AduV_ìî∂°úä<∂¿ËmÛ≈CÁv,h§ÚÊÀãàïË{*r$Å=!∆cm/%Ä£ô[™)•˝GÍ·˜kÂ˚[P&m+°Ç]1ı›b®|2‹L«•,r0PÄWìÇ‚ËÆ≥ßØY4ÆrÔ*ùÆx¨‚3ÏSµ…ô“(®*7°N´¸Ã~Xõ'mE·¥*úΩ0W°1. .…‚»T€°íOæ$5ò˛/i‹∏M„ﬁ/Ëlı¡ä‚”˛rw”®+‘WóÆáÿ æì∂âYS0ÇO0Ç7†'+c»ÃM-õÑQrlÙú^2QÆﬁ0	*ÜHÜ˜ 0O1&0$USSL.com C2PA RSA Root CA 202510U
+SSL Corporation10	UUS0251222181730Z301221181730Z0J1!0USSL.com C2PA ICA R1 202510U
+SSL Corporation10	UUS0Ç"0	*ÜHÜ˜ Ç 0Ç
+Ç À:¥Õ∏úÀ)V∏yß¯kˆ˘ÿèr√¶ò≠*A⁄a.GRΩtQæ]ÏzÇ∂¿˚˙Ë'•ãË˛bÛ`Ò_H ssï‰NnÃNz5ﬁX·◊Ç‹“GCwõﬂHàyü£9§YN^‡NGóÚuB◊v=∂§"‹Ì∆o‘rFå÷Q«µ∑zÚì˘#'’ÄPuäp†hÈÁºÑ(|ú*Í)©¿/˛…vFU∞/cÍ}ûÙ∞D§@ﬁ@6\DäTkWHˇªo§’Íé¬◊|ÿºŒiø† MìE;ô.y“œûü)ªFŸxc0ñ3Qú^ìm˙Â4JXx≥)l]|∏uï<ôw!{ÿ¥JÎ⁄Õ«
+÷…¢ﬁÆó≥∂Qñ⁄íõ√≤ªPƒ˛∂§Lï]-íjObÂ‡*˜i†ú’πì ⁄—ª^O∆Ø˘)L–…ÏÎÛ≤qP{v'hë˘Pà∏w5ÿÕ°·◊”)ÁJ∆áTY$¬g≤m	5€∫Œ∏F•‡ã⁄·ßüjŒ`“ƒ˜¡ﬁsyU‡p¥ÔÍÃ«˛vâNf
+ià-Ì√F¢*‰å‘úWF-Xb’ ®˙~¯¬ŸajÀ5]†ì£≤e®/ÌÔòÁ¸~∫HÙ™°q¸ìØÍßNsài’B¿˘ÑíÖOÀT≥=:¯›)ey Cûñ∏áXñ!Ô—ë{ £Ç&0Ç"0Uˇ0ˇ 0Uˇ0)U%"0 ++$
++ÉË^0U9=G‹óèØà{MsÕÂÓ§•*0U 00
++ÉË^0U#0Ä¸*Ju:Ä˙ôcìsWÏæì∞}√{0x+l0j0$+0Ühttp://ocsp-c2pa.ssl.com0B+0Ü6http://crt-c2pa.ssl.com/SSL.com-C2PA-Root-2025-RSA.cer0	*ÜHÜ˜ Ç Œ6˙>Ôñ6-éØUfˇ{+ kVıÀ≠Ω*Å≠•¶–M£>ì‰ìi’‰å®nÊ7T‚%úÏef(<3=¢ö¢ªÕgdJÁæt!°n√´&ƒ;,⁄Uπ˝GN‡çxõ7Éƒt;≈GaÔmAr§€]CS…ñNÂ‡:ﬂ®›.—ØXó÷ÁÙ_r#<kœΩ9´åì®èßvY>·íı˜Ÿ˚Fb´nn‘àF†≥/*j_•N⁄¯‘¸ÃŸ£<©wE
+¡˘òπ9ÀÃ°q¿*Çq”‰ˆ%‚Q!m÷ﬂ‰SçoJ}é^¿∫’wy!ÅzŒÌ˜õé∂≤äBVùèkA*˛kúãÓ£(œ_ÛÈ–d÷Ó¬âKÎíœıØ¬'M∏ë°7%ôÊ˝Ä‹Ùº«7{æ¥-gX/Á√≥ãqÂDz0∂•≤u>[#~;”T¶:π«Ã3’j5zÅv/˛W⁄i¯>?ÔTèã{F√cû˙Ìƒ/pÑ+ˆVÇÙßÀ$◊l^${:Ω©X;i≥úè“ptˇãn&ª√´E«SñúGµ∆F´^ı¸àãh£5Â|jïeµ´Îπˇ∫∏‡õJG≤ŒÏ/â}ÓØúMƒ…Œı2=è˜&4˛"ãzÌ˘^^g_Q[€$V˚—Y°∑ﬁöf	∂—Ü.˙}~ïyõDf|6Öˆı£gsigTst2°itstTokensÅ°cvalYã0Çá	*ÜHÜ˜†Çx0Çt10	`ÜHe 0Åá*ÜHÜ˜	†xv0t
++Éø0010	`ÜHe  ihR*ø√Õ“5;ﬂW(iz<¢Á£” ˛1fóñTq˚∑	 Ø∏HÏvJ›20261008175647.747641Z0ÄBRöÆ\†Çf0Çˆ0Ç^†a€F(2äåçJ∑ø˛`„l?q∑0	*ÜHÜ˜ 0{10	UUS10	UCA10USan Francisco10U
+OpenAI OpCo, LLC10
+UTSA10UOpenAI TSA Issuing CA0260408174626Z370709174626Z0u10	UUS10	UCA10USan Francisco10U
+OpenAI OpCo, LLC10
+UTSA10UOpenAI TSA Leaf0Ç¢0	*ÜHÜ˜ Çè 0ÇäÇÅ Í ≈≠î˝˝'ü«xßa ˇ)a*˚°àÕ_®¢óùâ/ãë»º∞ñê=UÇ¡ñé6j≠âiËê€,D2É®
+ÕwÂ5ËÓ®d[˛∏‡éùÁ °(√5›ß7È"˜	Móö¥Ñs¿.|©PG(†¥i∞á)zY˛5B˘ŸiRJ 7ÚhÃÒ-∑Çñ KF\=§Ü∏KEf8¢NM' ï∫uÃNájüt√ $_ƒ~\Æ˛ÛïÌ ëﬂ<ıÜõ*^÷–›…˙»M√…ÑZI,‰8s`R∏LÓ∆Û∑∂ÿ›j©Œ ∫]÷ƒ\5dÚ#S?bée]p+‘…k	ÅERËWÌZF]⁄]vú%yhÉQ§òÑuëròUˇÿ„Cb±Ìig'Aº≈èÚj+ÉIË·-4ª9ØgΩ¥ï»≤ΩEgÕràî_UK,≠ØÌ•Ù$Øw>ÉädQèëå9ñK∞=Æ˙ô°>å=æ6°.ıcµ £x0v0Uˇ0 0Uˇ¿0U%ˇ0
++0U§'TÇ¢äÄ{=≈ÜÕ?pŸ¬ÉôQx0U#0ÄÚ∞«T=#CÖ‹ s–rÄ=∏®0	*ÜHÜ˜ ÇÅ  ˚$OA¿¿ºò≤2 ç ôH5OƒFV~ß>?∂•#˘*H>‡QùE@x¡ªÉNìP…õ'ñhﬂMŒÚˆ“y´ÔÍ¡⁄?ıòYÊpÕâÙÓGã™ÀÏˇå~·FÿëÊú∏‰4Fˇa“x¯}89„RÌ_fËs¿ r;‰®´éÜ*£7!˘;ﬂ{\TÿL«j*KœCt`Äs£…—wØá©˝µ±Ñjnøà*Œö°ö´¢ûÇH7≈cQó€R|og…iB’œı˚≠^ãê‚‡y<.Éjû•Ë%AèÖÌ‰¡†:ç˛ùRPÔáﬁ·dÕU˘! ﬂ∂)Ôü'n—∫4F´J"OÁbw›E#›a-¬1)èƒπ~y´¥W‘¡Ïœ·\{eI∞ÎM´§«'@N¶¥µèœ|√¥Cßv”^0cÓ®Æ5(td´Z5„[/:>N
+a÷0MCõˇN.∆!π>:, W0ujédK¢–	—◊†g&Amg¯pv∏%&V˘ë&'√KI0Ç~0Çf†ç ∆≈≈⁄∞ºÒNï•Íº0	*ÜHÜ˜ 0x10	UUS10	UCA10USan Francisco10U
+OpenAI OpCo, LLC10
+UTSA10UOpenAI TSA Root CA0 260408174626Z21260409174626Z0{10	UUS10	UCA10USan Francisco10U
+OpenAI OpCo, LLC10
+UTSA10UOpenAI TSA Issuing CA0Ç¢0	*ÜHÜ˜ Çè 0ÇäÇÅ âº‘π‚»°æaªﬁ<df~ßæúm”©0&<Ù‡k 9ﬂï4Ì©¢eH€7Ü2ÉéÃ
+J†¿Û4l†¿òÕ+ü•ÙÀ|Ÿ&ﬁ~…M¢Ôc[ëÊˆY®“˙N˘Ÿ8+ZÕ`ZòÅò®◊S∆„÷.H¨CW	ÈîÚG˘lEä`∑˜Æ/^¢5NÖ8Öiü4ù–MÿC=Õ4m¸cì¸”pªJËvËjNfI†Ì¸¯æÔö∑®w¨Ô∑8Ãπ‘*3ƒv÷@wÀ˛«]-@”ﬁã<¿÷@AôÀî?,} kR¸û P∑	GE·#U˙±OoTòïÙ}∫¯h·"z‹äëCã∂.C±b†æ $é.Ôø§—MË∏?1œ&=≈ PÍÚŸ$ dÌ’sû.px™ﬁV<˘‘Ä¢Ë≠Øˆ˚®£\Àh´D€0wÚƒ4tkUm∆á˚Ú2<ûqE˜ÏP˚˛÷1&ª–ƒMa‚B€Ø√+n_+Ê‚∞Ôç\DÕ¿s}è¢ÈΩmÇº%eÑ0iÌ £{0y0Uˇ0ˇ 0Uˇ0U%0
++0UÚ∞«T=#CÖ‹ s–rÄ=∏®0U#0ÄX¬@†<Gv+®Ên®ëñéñ»∑Ÿ‰0	*ÜHÜ˜ Ç íÏ7\ﬁlÎd⁄Æ°	0rÆ‹rı;ºz=÷∆·/ˆÉ3}ËW@NLô™k‘ôŸã€k÷L¯ –Y3”°†8\#àD$˚á·ˆì'º°ÌL_g]ˇ5´1“Ï{‘@C7O¬Ñú∫d»∞¢~ö6¯·–Ç≥PC≤‡UΩÄî»YRNJtﬁ]«EXõ∑˙0™;‹Gº’.,π8c,yZ∑›U≠=BﬂàœÒh˛s ‘Z∑ﬁ$óë¿Ág˛‹¶
+Û•F≥QœçØ_„»∏@∆Ω„˘÷Kq–d]Âd¬K¿^w—=«[ûœ{˝îîÁKQ⁄˚dÙ´5îÒˆæ~+›≤ö=P›P√ñdém´sü(;w–óÌoEO±3._FÎÉ∂©aº◊ÇÆ¯Äo¬„i0Êm|:Dí+ò-Ø‹4¡æ•*HÁá»ﬁ8µ3 „ÑPpÒ≤KﬁçOˆë‹_Ö˙ÒÊ—◊ ßÓ¥üˆ!x)Å„pXwÜ§:KóÉFË⁄¬jv…©À!Eæe±†Ü.ÄºYKMõCm¥◊Ñ‡¸’»aêCéjù√Ò!<Ñ]˛;÷ÿ#9E_q˙2˝†ÄïDµO Â√t˝‚NárÜÙQáΩ‘µ+5lí§;kjù∫˝¿;úv¬’9I⁄„î>Pj◊L‚âaùÔÎœ≈√@npz80ÇÊ0ÇŒ†P;lâå$3,è˜Oé˚}ÇÏ0	*ÜHÜ˜ 0x10	UUS10	UCA10USan Francisco10U
+OpenAI OpCo, LLC10
+UTSA10UOpenAI TSA Root CA0 260408174625Z21260409174625Z0x10	UUS10	UCA10USan Francisco10U
+OpenAI OpCo, LLC10
+UTSA10UOpenAI TSA Root CA0Ç"0	*ÜHÜ˜ Ç 0Ç
+Ç ˆíÈ“∫≠û·¨u®Vÿ™±≥jí_ñyıí∑-$¯ø¿Ø`æ¡öÕyö‹lö˛6ö¡ò§?‰,ù∫••Ps≥
+¬˘ÛƒI/xΩ“ÏºÁ?Ùõ—Ú†a¢,â% Q˘%ú“∆/ÙâƒA˛&”m5ÕÏª5`@®ÖQæˆÓêòÒ*ÿùzkjŸ.ŸcÛÂ\)≈Ü"¡ähÕÎ8û©Pñ[#C˚8ˇB|;:°Q/%…H‹1ˇPrÓ|°wÕoÅaÛ?ønË“±¶6‰k2˚˛w®^õ\››1êLéeˇÅÀAŒ(1S CŒHn}÷d≥)‰¥.:∑TZrVWÛ®j}ÔÊa›e»H	Iô2t
+¢Ã›ì S¨#ΩÇÖ ±ÔæÌ°w Ó:F3¢ûÏØÈ1f¥fo≤âì†~ï!ŒA¯^éÈÕπ¿’3]x––'1œP0rs⁄j¬¿ìœ≠‹dáˆ˚Nàvı>Ôˇí,ôw.ˆ‹ò∂ù	:˝Ù	«è_ZÈ~H	+µäÉÚ[<,Øë¢ùA∑Rh—ø∞¿⁄O`ΩÓ)™Ìáçq\(åçà£%cEÿ¸{aèlFT;\…∞ÇØÉ»±#?ü[Ó¢◊Tµ*SÆªÖ€¶˙óûÏÑârÛz@…∂ÖXG[Ò$a9¢Lﬁÿ∆®"Úûø[L,À £f0d0Uˇ0ˇ0Uˇ0UX¬@†<Gv+®Ên®ëñéñ»∑Ÿ‰0U#0ÄX¬@†<Gv+®Ên®ëñéñ»∑Ÿ‰0	*ÜHÜ˜ Ç X¯ÅëòÚla˛»Ü÷[Ñ¶÷æ∏¶]]IÀ∏°)Õ-ù∏X˘Ñâ=<¯o’j¥*¢UígÅô^µT˚öFÄ„Q S¿¡àWﬁÔÇU~„Ù}Î&¸Éˇ!®¡¨ﬁ€ì´Õ–0v:ìùŒ™g9.Ätﬂm~v/ÈÍPAã8=lÂ‡>Ó/€dT6^æbE∂—!¥Ä<åÎ⁄ú÷J©’Te[k—X~¿IáÎÎK_í;î◊öÜˆ°YŒG8¨√∞td—¿R;°±{(k·ió¯(;'ˇÆ§û˜eÀ†ÙÍπΩîŒD‚ò±
+HhÓU©!•`è˛ ÷}—{Ü úÛ®x–∆⁄@.»Å\b®*¡˚VÁyéØÏÂ€”p˛FÃc®dÒ<ÈØ•dº^øÖ-∞Œ„π”§◊RªpãÜù˚.ø
+ˆ“U+#B+C\Ï°Ça?œqÌ∞˜óÈ‰À¬<¸¨w∑∂‹ ¡LÈâ≤≤/√~ídúµÑﬁÃñ˝â∞KµC}“È≠Ü˝Ÿ-üΩ Ó¿¥GV#|HëNgâ {b¡…^UÒˆ∆Q#WoÔáæ Fyæî±» (ùïäà&UfRÔŸK∫®ZÈ¬,≠ü√\BÛ°ı'dyqå
+Zû˝π˘Eyp·jµ7ñéX˝EøT%åÉ=Ÿ&3#–Xw¶∏1Çh0Çd0Åì0{10	UUS10	UCA10USan Francisco10U
+OpenAI OpCo, LLC10
+UTSA10UOpenAI TSA Issuing CAa€F(2äåçJ∑ø˛`„l?q∑0	`ÜHe †Ç%0	*ÜHÜ˜	1*ÜHÜ˜	0/	*ÜHÜ˜	1" úC
+£P ŸËz"\IªÅô),5q 1≈¨˛qíjõ0Å’*ÜHÜ˜	/1Å≈0Å¬0Åø0Åº ΩOπ≤êLÅ6gànÔA·m˛Ÿ"ùø[íJ–¢ƒ`F"z0Åó0§}0{10	UUS10	UCA10USan Francisco10U
+OpenAI OpCo, LLC10
+UTSA10UOpenAI TSA Issuing CAa€F(2äåçJ∑ø˛`„l?q∑0	*ÜHÜ˜ ÇÄ?ã£„ •4K*,/T◊Åmç!°*á.‰õ¥]03@"àïsUƒ¿'oWb¸qbuñâ2DŒX˛QíõQŒfå±QÀ!BmëŸ%Ô¡JØ6öﬁ€Ÿfû¿Ñí ¡û¶≥_„äV Ø®˘µ´∆ßhßΩÁb±Ò÷Ã`6î3?Ñﬂ∏t@†/5äDèc¨ÅözI‡‹∑d4ÔÒÿ$‰'ì∞¥∂^‚˚n$Ó•TqﬁÛœfúƒÀçuÎ˚t¿Ú}ÓdOµœ≥è∫ƒx≤ä˝@Ëê[ßÓ•˙\-@°€d ±ÜÿQ—≈xÏv ^•Eå˘IR±ñ	≥û9xå‘S˚Íç)Ç<_≥®ë˜Â`Ìµˆ5™%°vìü.åŸÉ2ÁLóº—7/	H(÷ •ü≤j˚ƒ"¸∂éÙ8*}ë˛t Qv√3ÑˇÌäú±tddÍJ%”UwØ(øèr$7∫û—∫ŒÔ˙ægˆıPYüçπnÛú√§©ãH™4erVals°hocspValsÅY◊0Ç”
+ †ÇÃ0Ç»	+0Çπ0Çµ0ÅÈ¢=™™xé˙ˆL˙^j—@MÂTÚÆ20261007220917Z0Åò0Åï0I0	+ ﬂÇ7S^Sÿ3±‡=$5ÒuÊ·
+9=G‹óèØà{MsÕÂÓ§•*•¸ÈpåÚÄ1ÓDdsÄ 20261007220917Z†20261014220916Z°"0 0	+020161009220917Z°#0!0	+0x2Â®˜M°}ñX{≤.j}0	*ÜHÜ˜ ÇÅ ÅΩ–:…1“¶uÉ7˘QKnpê'‰∏ﬂ∞”LsÆf›ÌmO®O–¶⁄ﬁ…Ô¯4\ãÑmlZˇÍøôôÃI‘m_+az˜ü†±ˆ*#;ﬂ™ìñÛ¶ô£ÜÌ√˝≠≠ÂiuVÍãj^≈°*Q∂(t'ùˆ¿ﬁ§=≤/§ELÒ˚q?/MÎ…8e[m§@«Kqù·iÂ‚œmQº‹Lìú—Ó?
+∂Ê>Ü√Z«_ \a±ÿÅ„´†€Ü°aØù7˘÷Înnº0ñ•}£«˙8ÅU®ŸYΩ”MÛÈîú•ÍX∂6;ä¿°0?¯†Ñ—àSS	eäI†œ‹®7G”úhâÕZ–È<,»A)“ÿ£I.Ñ`€ÏÊ¡x∫hÃå∞%cc ⁄-Òr/Çgﬂì:>ãπ±ùÚ4Èw!òå‘M ‡ë 0âadh|ˇ Ω{"π∑ \vòAzœ«>≠C5+I(≈âAJ,b∑ªìÄrüào¬ÆR'£¢
+É1É˙P¸†Ç10Ç-0Ç)0Ç†ZJ≤?–(∆˛K≥?n=„'∫0	*ÜHÜ˜ 0J1!0USSL.com C2PA ICA R1 202510U
+SSL Corporation10	UUS0260102201415Z270102201414Z0M10	UUS10U
+SSL Corp1+0)U"SSL.com C2PA ICA R1 OCSP Responder0Ç¢0	*ÜHÜ˜ Çè 0ÇäÇÅ ¢PìAÊJKﬁõ¶ït&X<ÏR¸ªî2Õ√∆Pﬂ–Ωú∆npã#ó◊åÓÃ|VÓgæ˘ö¿í∞Î∫•3ˇmiêÉ/à-Ì∞K],õπ∏e$cÓ∞$`ç
+Ë¯y∆”a5[åóXü≥å\ÿ‰∆¶–C≥ß”TŸlà˜ß∏ƒÿn˝1(ﬁ	.ê'ısŸw¶’Pö ŸºÀ2≈Fπ¸¢UMÓ†õ¨hj¡?8*zÿ”]∫¥≥ÎùU)ÓÏ“7üÆ≈6©ú∞∑ﬁD*ãËPß Äy{%œŸ9ÚûEõw∫x	†¶N{@é1˝Í"háÄƒÇ!‰OZÚÛà§Kâ*~L$&©†ö…ù|ÓkbÖ"2Ó÷‹+“ﬂ÷F4v†Ç(xéæ*›‰÷j*w€tz5'¶á¡∏:SÅ™ö÷+ìØ„õ∑e“&0J•æ ÒãZ4¶°“Ör8X9ƒÏ>2Ñﬂ7y÷0”7xÊËÕíÈn+nÏ0Î28.©<“-Â £Åá0ÅÑ0Uˇ0 0U#0Ä9=G‹óèØà{MsÕÂÓ§•*0	+0 0U%0
++	0U=™™xé˙ˆL˙^j—@MÂTÚÆ0UˇÄ0	*ÜHÜ˜ Ç ªs¶UÑ£hPÎÒ†l◊…)Ñù>®/Ì
+ª†Î´À¡∏Ü∑0%HmÛ·Ω°M(“+e`D‹∂ç´U?◊›Ö˛ó[$,Ï≠KKÙª	˙û∞‡∞∞˝éDr¥èj›cËÎ≤÷‘«ÒÁãﬂﬂlƒ	¢˝=sX¡()¢k`i0);U¥å©§ê©p>nrƒv0iÇO%¥OUŒÈHœ_ãÕVkﬂ‹ûÜ65é¡7ïs∏Ì∂®DæˆóﬁIºè°>r'–=!|R\P©«‹©˚˜m∞*&†îﬂdÖåß=ä:1të!·ÏJﬂÖhŒa©§k23”hÊ…ø≥¸ˇïÒ◊¬eJlNG˛®`îwhAŒN(D•∆òá®5Úéf™$Ωj¡Æ kﬁt£w&eß•¬(%˝>©ÂIπˇthrGP˚tö"hÖåøÉ úŸ„m¢<\«N•v“ˇ¬™≈Æ¥¸*Bl'®¥÷9ÀôXÀ√±¸6Ë5‘À^…òòŒËÇãÌXa∫aë—©z…>X‡¸îHLtÊœ‘|≥ÚË#KË0hª'Ïπˆ	∂ÌyìÂ
+Çµ«Á.∆Ökì•AY)î∫X”oñMüQ3ë?¿∏Pœµ∫`àÈ7
+Lñü#x⁄¡ é≈ñ>l˙_ 7Vﬂ	!òíy˜¿ø„Œíß´,W=A‘â‡?cpadY&u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ˆY 8#æ{vÉÔÎ∫∫†Æ`› ◊<uò ∆¸LMÅMÊ£Xøè≤$Ä
+™∆}&ÚZ˝/„V"IP7µ5§ËaÂ-òXq‘≤µôIiœ“å¢ÀW¯ÆoûGëIIÑÓo+Ï ÌŒfp…ú±æaˇÉˆz#Ú⁄ä.˙–NR›Mgà7RvËsÍ 1Ï)˚ óáÉ%‰¿„@3>]^≤{ì≥hrúNy¬&JÇº√+∏
+ $Í˚ôÀÄqª8øµÓ+ﬁO–""≈&UÎ	¡œö`Ã…ÂÙ\ı˝•0ˆì©8Z¬Rµ∏po&Fº™˝ø¿L¢ß…∆@,§◊‡;dÙ#√réb‘È∑&!ê
+endstream
+endobj
+29 0 obj
+<< /AFRelationship /C2PA_Manifest /Desc (Content Credentials) /F (Content Credentials) /EF << /F 28 0 R >> /Subtype (application/c2pa) /Type /Filespec /UF (Content Credentials) >>
+endobj
+xref
+3 1
+0000025981 00001 n 
+28 2
+0000026116 00000 n 
+0000050499 00000 n 
+trailer
+<< /Size 30 /Root 3 1 R /Prev 25342 >>
+startxref
+50695
+%%EOF
